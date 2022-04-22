@@ -1,0 +1,29 @@
+name: test-inline-scanner
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test-inline-scanner:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Pull Docker image
+        run: docker pull ghcr.io/ladykerr/gh-action-demo:latest
+
+      - name: lw-scanner
+        id: lw-scanner
+        uses: ./
+        with:
+          LW_ACCOUNT_NAME: ${{ secrets.LW_ACCOUNT_NAME }}
+          LW_ACCESS_TOKEN: ${{ secrets.LW_ACCESS_TOKEN }}
+          IMAGE_NAME: ghcr.io/ladykerr/gh-action-demo
+          IMAGE_TAG: latest
+          SAVE_BUILD_REPORT: true
+          BUILD_REPORT_FILE_NAME: report.html
+          FAIL_BUILD: false
