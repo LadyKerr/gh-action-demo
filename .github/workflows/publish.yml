@@ -18,6 +18,6 @@ jobs:
 
       - name: Build the hello-world Docker image
         run: |
-          docker build . --tag ghcr.io/LadyKerr/gh-action-demo:latest
-          docker run ghcr.io/LadyKerr/gh-action-demo:latest
-          docker push ghcr.io/LadyKerr/gh-action-demo:latest
+          docker build . --tag ghcr.io/ladykerr/gh-action-demo:latest
+          docker run ghcr.io/ladykerr/gh-action-demo:latest
+          docker push ghcr.io/ladykerr/gh-action-demo:latest
